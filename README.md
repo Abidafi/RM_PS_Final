@@ -52,7 +52,7 @@ When we pass 4 and 5 as inputs, 4 * 5 evaluates to 20, matching our expected out
 
 ## 03. Even or Odd
 
-To solve this, you can use the modulo operator (%) to check if the number is divisible by 2. If the remainder is 0, the number is even; otherwise, it is odd.
+To solve this, we can use the modulo operator (%) to check if the number is divisible by 2. If the remainder is 0, the number is even; otherwise, it is odd.
 
 Here is the complete solution:
 
@@ -76,7 +76,7 @@ When we pass 7, 7 % 2 leaves a remainder of 1, so it evaluates to "Odd", matchin
 
 ## 04. Return Negative
 
-To solve this, you can ensure the number is negative by using Math.abs() to get its absolute value and then negating it, or by checking if it's already negative.
+To solve this, we can ensure the number is negative by using Math.abs() to get its absolute value and then negating it, or by checking if it's already negative.
 
 Here is the complete solution:
 
@@ -232,7 +232,7 @@ For example, if we pass 2 and 2, they are equal, so (2 + 2) * 2 evaluates to 8. 
 
 ## 10. diff21
 
-To solve this, you can check if n is less than or equal to 21. If it is, return the difference (21 - n). If it's greater than 21, return double the absolute difference ((n - 21) * 2).
+To solve this, we can check if n is less than or equal to 21. If it is, return the difference (21 - n). If it's greater than 21, return double the absolute difference ((n - 21) * 2).
 
 Here is the complete solution:
 
@@ -254,4 +254,410 @@ When we pass 25, it goes to the second condition: (25 - 21) * 2 evaluates to 4 *
 
 ---
 
+## 11. parrotTrouble
 
+We have a problem where we are in trouble if the parrot is talking and the hour is before 7 or after 20.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {boolean} talking
+ * @param {number} hour
+ * @return {boolean}
+ */
+var parrotTrouble = function(talking, hour) {
+  return talking && (hour < 7 || hour > 20);
+};
+```
+
+Explanation:
+
+ - talking: Ensures the parrot must be talking.
+
+ - (hour < 7 || hour > 20): Checks if the hour is outside normal daytime hours (before 7 AM or after 8 PM).
+
+---
+
+## 12. makes10
+
+Given two integers, We return true if one of them is 10 or if their sum is 10.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {boolean}
+ */
+var makes10 = function(a, b) {
+  return a === 10 || b === 10 || (a + b) === 10;
+};
+```
+
+Explanation:
+
+ - a === 10 || b === 10: Checks if either number is 10.
+
+ - (a + b) === 10: Checks if their combined sum equals 10.
+
+---
+
+## 13. nearHundred
+
+Given an int n, return true if it is within 10 of 100 or 200.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var nearHundred = function(n) {
+  return (Math.abs(100 - n) <= 10) || (Math.abs(200 - n) <= 10);
+};
+```
+
+Explanation:
+
+ - Math.abs(100 - n) <= 10: Checks if the distance between 100 and n is 10 or less.
+
+ - Math.abs(200 - n) <= 10: Checks if the distance between 200 and n is 10 or less.
+
+---
+
+## 14. posNeg
+
+Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative" is true, then return true only if both are negative.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number} a
+ * @param {number} b
+ * @param {boolean} negative
+ * @return {boolean}
+ */
+var posNeg = function(a, b, negative) {
+  if (negative) {
+    return a < 0 && b < 0;
+  } else {
+    return (a < 0 && b > 0) || (a > 0 && b < 0);
+  }
+};
+```
+
+Explanation:
+
+ - if (negative): If true, both numbers must be strictly less than 0.
+
+ - else: One number must be negative and the other positive.
+
+---
+
+## 15. notString 
+
+Given a string, return a new string where "not " has been added to the front. However, if the string already begins with "not", return the string unchanged.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {string} str
+ * @return {string}
+ */
+var notString = function(str) {
+  if (str.length >= 3 && str.substring(0, 3) === "not") {
+    return str;
+  }
+  return "not " + str;
+};
+```
+
+Explanation:
+
+ - str.substring(0, 3) === "not": Checks if the first 3 characters form the word "not".
+
+ - "not " + str: Prepends "not " to the string if it doesn't already start with it.
+
+---
+
+## 16. Compare the Triplets 
+
+Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories. We need to compare their points.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number[]} a
+ * @param {number[]} b
+ * @return {number[]}
+ */
+var compareTriplets = function(a, b) {
+  let aliceScore = 0;
+  let bobScore = 0;
+
+  for (let i = 0; i < 3; i++) {
+    if (a[i] > b[i]) {
+      aliceScore++;
+    } else if (a[i] < b[i]) {
+      bobScore++;
+    }
+  }
+
+  return [aliceScore, bobScore];
+};
+```
+
+Explanation:
+
+ - Loop through elements 0 to 2 to compare corresponding indices.
+
+ - Increment Alice's score if a[i] > b[i], and Bob's score if a[i] < b[i].
+
+---
+
+## 17. A Very Big Sum 
+
+In this challenge, we are required to calculate and print the sum of the elements in an array, keeping in mind that some of those integers may be quite large.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number[]} ar
+ * @return {number}
+ */
+var aVeryBigSum = function(ar) {
+  return ar.reduce((sum, num) => sum + num, 0);
+};
+```
+
+Explanation:
+
+ - Uses reduce() to accumulate the total sum across all array items safely.
+
+---
+
+## 18. Staircase 
+
+Consider a staircase of size n = 4. Its base and height are both equal to n. It is drawn using # symbols and spaces.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number} n
+ * @return {string}
+ */
+var staircase = function(n) {
+  let lines = [];
+  for (let i = 1; i <= n; i++) {
+    let spaces = " ".repeat(n - i);
+    let hashes = "#".repeat(i);
+    lines.push(spaces + hashes);
+  }
+  return lines.join("\n");
+};
+```
+
+Explanation:
+
+ - " ".repeat(n - i): Generates the necessary padding spaces.
+
+ - "#".repeat(i): Generates the correct number of hash characters per row.
+
+---
+
+## 19. Grading Students 
+
+HackerUniversity has a grading policy where each student receives a grade from 0 to 100. Any grade less than 40 is a failing grade. Sam is a professor who rounds up grades based on specific rules.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number[]} grades
+ * @return {number[]}
+ */
+var gradingStudents = function(grades) {
+  return grades.map(grade => {
+    if (grade < 38) {
+      return grade;
+    }
+    let nextMultipleOf5 = Math.ceil(grade / 5) * 5;
+    if (nextMultipleOf5 - grade < 3) {
+      return nextMultipleOf5;
+    }
+    return grade;
+  });
+};
+```
+
+Explanation:
+
+ - Grades below 38 are not rounded up since they remain failing.
+
+ - Math.ceil(grade / 5) * 5: Finds the next multiple of 5. If the difference is less than 3, round up to that multiple.
+
+---
+
+## 20. Time Conversion 
+
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var timeConversion = function(s) {
+  let period = s.slice(-2);
+  let hours = parseInt(s.slice(0, 2), 10);
+  let restOfTime = s.slice(2, 8);
+
+  if (period === "AM") {
+    if (hours === 12) {
+      hours = 0;
+    }
+  } else {
+    if (hours !== 12) {
+      hours += 12;
+    }
+  }
+
+  let formattedHours = String(hours).padStart(2, '0');
+  return formattedHours + restOfTime;
+};
+```
+
+Explanation:
+
+ - Parses the AM/PM designator and hour value.
+
+ - Adjusts 12 AM to 00 hours and adds 12 to PM hours (except 12 PM).
+
+ - .padStart(2, '0'): Ensures single-digit hours are padded properly with a leading zero.
+
+---
+
+## 21. String Repeat 
+
+In this problem statement; We write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number} n
+ * @param {string} s
+ * @return {string}
+ */
+var repeatStr = function(n, s) {
+  return s.repeat(n);
+};
+```
+
+Explanation:
+
+ - s.repeat(n): Built-in JavaScript method that repeats the string n times.
+
+---
+
+## 22. Reversed Strings 
+
+Complete the solution so that it reverses the string passed into it.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {string} str
+ * @return {string}
+ */
+var solution = function(str) {
+  return str.split("").reverse().join("");
+};
+```
+
+Explanation:
+
+ - split(""): Splits the string into an array of characters.
+
+ - reverse(): Reverses the array elements.
+
+ - join(""): Joins the characters back together into a string.
+
+---
+
+## 23. Sum of Positive 
+
+When we get an array of numbers, return the sum of all of the positives ones.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var positiveSum = function(arr) {
+  return arr.reduce((sum, num) => num > 0 ? sum + num : sum, 0);
+};
+```
+
+Explanation:
+
+ - reduce() checks if num > 0. If true, it adds it to the running sum; otherwise, it leaves the sum unchanged.
+
+---
+
+## 24. Grasshopper - Summation 
+
+We are writing a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var summation = function(num) {
+  return (num * (num + 1)) / 2;
+};
+```
+
+Explanation:
+
+ - Uses the standard mathematical formula for the sum of an arithmetic progression: n(n + 1) / 2.
+
+---
+
+## 25. Convert a Boolean to a String 
+
+Implement a function which convert the given boolean value into its string representation.
+
+Here is the complete solution:
+
+```javascript
+/**
+ * @param {boolean} b
+ * @return {string}
+ */
+var booleanToString = function(b) {
+  return String(b);
+};
+```
+
+Explanation:
+
+ - String(b): Safely converts the boolean value (true or false) into its literal string equivalent ("true" or "false").
+
+---
